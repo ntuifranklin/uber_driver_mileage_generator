@@ -1,5 +1,5 @@
 # The uber mileage generator.
-This python code will generate a list of driven miles through out the year.
+This python bot will generate a list of driven miles through out the year.
 
 ![final screen shot](https://github.com/ntuifranklin/uber_driver_mileage_generator/blob/main/1.png)
 
