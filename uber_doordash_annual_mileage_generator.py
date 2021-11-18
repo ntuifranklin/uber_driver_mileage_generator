@@ -44,14 +44,11 @@ for month in ALL_MONTHS:
         REST_DAY = (len(weekDays)-1)
         if ( weekDays[day_in_the_week] != weekDays[REST_DAY])  :
 
-            date_column = weekDays[day_in_the_week] + " " + \
-            str(MONTH_NAMES[month_index]).capitalize() + " " + str((day + 1)) \
-            + " " + str(YEAR)
+            date_column = weekDays[day_in_the_week] + " " + str(MONTH_NAMES[month_index]).capitalize() + " " + str((day + 1)) + " " + str(YEAR)
             mileage_generated = randint(LEAST_DAILY_MILEAGE,MAX_DAILY_MILEAGE)
             END_MILEAGE = START_MILEAGE + mileage_generated
 
-            data.append([date_column,str(START_MILEAGE),str(END_MILEAGE), \
-            str(mileage_generated)])
+            data.append( [date_column,str(START_MILEAGE),str(END_MILEAGE), str(mileage_generated)])
             START_MILEAGE = END_MILEAGE
             sum_mileage += mileage_generated
             # print("Now sum mileage is ", sum_mileage) # was meant for debugging
@@ -108,13 +105,10 @@ customer_full_name = first_name + " " + last_name
 csv_file_name = customer_full_name.replace(" ","_").upper() + \
 '_DAILY_MILEAGE_TRACKING_FOR_' + str(YEAR) + '.csv'
 with open(csv_file_name, mode='w') as file:
-    file_writer = csv.writer(file, delimiter=',', quotechar='"', \
-    quoting=csv.QUOTE_MINIMAL)
-    file_writer.writerow([ customer_full_name +  \
-    " Daily Mileage Track for Year " + str(YEAR) ])
-    file_writer.writerow(["Dates Worked","Start Mileage","End Mileage", \
-    "Sub total Mileage Driven"])
+    file_writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    file_writer.writerow([ customer_full_name +  " Daily Mileage Track for Year " + str(YEAR) ])
+    file_writer.writerow(["Dates Worked","Start Mileage","End Mileage", "Sub total Mileage Driven"])
     for l in data:
         file_writer.writerow(l)
-    file_writer.writerow(["Total Mileage Driven For " + str(YEAR) + \
-    " :  " + str(sum_mileage) ])
+    file_writer.writerow(["Total Mileage Driven For " + str(YEAR),
+    " :,  " + str(sum_mileage) ])
